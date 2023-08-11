@@ -134,6 +134,7 @@ Set-SPOTenant [-ApplyAppEnforcedRestrictionsToAdHocRecipients <Boolean>]
  [-MassDeleteNotificationDisabled <Boolean>]
  [-DisableDocumentLibraryDefaultLabeling <Boolean>]
  [-EnableSensitivityLabelforPDF <Boolean>]
+ [-BlockAppAccessWithAuthenticationContext <Boolean>]
  [<CommonParameters>]
 ```
 
@@ -1884,6 +1885,28 @@ The valid values are:
 
 - True - Enables support for PDFs.
 - False (default) - Disables support for PDFs.
+
+```yaml
+Type: Boolean
+
+Parameter Sets: (All)
+Aliases:
+Applicable: SharePoint Online
+Required: False
+Position: Named
+Default value: false
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BlockAppAccessWithAuthenticationContext 
+
+Allows tenant admins to turn on/off support for blocking background apps (runs as a background service or daemon without a signed-in user) accessing SharePoint sites. This needs configuration in Azure Active Directory Conditional Access policy(s) such that these apps can be issued specific authentication context values. At least one conditional access policy needs to be configured targeting one or more such apps. If the authentication context value issued to the app matches with the value configured with a given site, only then the app will get access. This feature only applies to 3rd party background apps. 
+
+The valid values are:
+
+- True - Enables support for blocking background apps from accessing SharePoint sites where authentication context values do not match.
+- False (default) - All background apps will continue to get full access to SharePoint sites.
 
 ```yaml
 Type: Boolean
